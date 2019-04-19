@@ -1,0 +1,62 @@
+
+
+<% if @jerseys.length == 0 %>
+<div class="mainCont">
+    
+    <h1>We dont have that yet! Contact us and we can try get it for you! </h1>
+    
+</div>
+<% end %>
+
+<br>
+<div class="mainCont">
+ <div id="itemsContainer">
+  
+ 
+  
+
+     
+      <% @jerseys.each do |jersey| %>
+      
+      
+      <div class="itemhols">
+       
+       
+       <%= link_to (image_tag jersey.image_url, :class => "itemholsIm"), jersey %>
+        
+       <p>Price <%= number_to_currency(jersey.price, :unit => "€") %>
+       <br>
+        Country: <%= jersey.country %>
+        <br>
+        Team: <%= jersey.team %></p>
+        <br>
+        Size: <%= jersey.size %></p>
+        <br>
+        Year: <%= jersey.year %></p>
+       
+       <p>
+         <%= link_to 'View',  jersey, :class => "button", :role => "button" %>
+         
+        
+          <a href="/cart/<%= jersey.id %>" class="button">Add To Cart</a>
+        
+         
+         <% if session[:login] == 1 %>
+         <%= link_to 'Edit',  edit_jersey_path(jersey), :class => "button", :role => "button" %>
+         <%= link_to 'Destroy',  jersey, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :role => "button" %>
+         <% end %>
+         
+         
+
+         
+     
+       
+       
+       
+       
+       </p>
+        
+      </div>
+    <% end %>
+    
+</div>

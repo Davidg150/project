@@ -1,0 +1,13 @@
+
+<div class="mainCont">
+<%= form_tag("/search", :method =>"post") do %>
+<%= label_tag(:searchbox, "Go ahead and search for your favourite jersey here!") %>
+<%= text_field_tag(:searchbox) %>
+<%= submit_tag("search") %>
+
+
+
+
+<% end %>
+</div>
+<br>

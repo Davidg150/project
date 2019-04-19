@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<div class="mainCont">
+<div id="itemsContainer">
+   <h1><%= @jersey.country %></h1>
+   <%= image_tag @jersey.image_url, :class => 'welcomIm'  %>
+       <h2><%= @jersey.description %></h1>
+   
+    <div class="itemhols">
+       <p>Price <%= number_to_currency(@jersey.price, :unit => "€") %>
+       <br>
+        Team: <%= @jersey.team %>
+        <br>
+        Year: <%= @jersey.year %>
+        <br>
+        Size: <%= @jersey.size %></p>
+       
+       
+       <p>
+         <%= link_to 'Back',  jerseys_path, :class => "button", :role => "button" %>
+         <%= link_to 'Edit',  edit_jersey_path(@jersey), :class => "button", :role => "button" %>
+         
+       </p>
+        
+      </div>
+   
+   
+   </div>
+</div>

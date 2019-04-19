@@ -1,0 +1,54 @@
+<h1>Cart</h1>
+
+<% if @cart.empty? %>
+    <p>Go back and add a jersey!</p>
+<% end %>
+
+<div id="itemsContainer">
+    
+    <table id="customers">
+        <% total = 0 %>
+        
+        <% @cart.each do |id, quantity| %>
+        <% jersey = Jersey.find_by_id(id) %>
+        
+              <tr>
+            <td>
+                <div class="image">
+                    <%= link_to (image_tag jersey.image_url, :style =>"height:40px"), jersey %>
+                </div>
+                
+            </td>
+            
+            <td class="title"><%= link_to jersey.team, jersey %></td>
+            <td><a href="/cart/remove/<%= jersey.id %>" class="button">Remove From Cart</a>  <a href="/cart/decrease/<%= jersey.id %>" class="button">Decrease</a></td>
+            <td class="price"><%= number_to_currency(jersey.price, :unit =>"€") %></td>
+            <td class="quantity"><%= quantity %></td>
+            <td class="price"><%= number_to_currency(quantity * jersey.price, :unit =>"€") %></td>
+            
+        </tr>
+
+        <tr>
+        <% total += quantity * jersey.price %>
+        </tr>
+        
+        <% end %>
+        
+        <tr>
+            Grand Total: <%= number_to_currency(total, :unit => "€") %>
+          </tr>
+
+        
+        
+    </table>
+    
+    <p><a href="/checkout" class="button">Checkout</a><a href="/clearcart" class="button">Empty Cart</a><a href="/jerseys" class="button">Continue Shopping</a></p>
+    
+    
+    
+    
+    
+</div>
+  
+
+  

@@ -1,0 +1,8 @@
+<% @countries.each do |country| %>
+       <div class="itemhols">
+           <p><%= country.title %></p>
+           <%= link_to (image_tag country.image, :class=>"itemholsIm"), country %>
+           <p><%= country.description %></p>
+         </div>
+    <%=render 'layouts/categories'%>
+    <% end %>
